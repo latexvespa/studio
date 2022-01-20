@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { scaleLinear as scale } from "d3-scale";
 import * as d3Shape from "d3-shape";
 import { range, sortBy } from "lodash";
+import { saveAs } from 'file-saver';
+
 
 const Wrapper = styled.div`
   padding: 40px 40px;
@@ -35,15 +37,27 @@ const pathFunction = d3Shape
   .y((d) => yScale(d.y));
 
 const Lines = () => {
-  console.log(data);
+
+  const svgRef = React.useRef();
+
+  const handleDownload = () => {
+    const element = svgRef.current;
+    const serializer = new XMLSerializer();
+    const str = serializer.serializeToString(element);
+    const svgBlob = new Blob([str], {type: "image/svg+xml"})
+    saveAs(svgBlob, "hello.svg")
+  }
+
   return (
     <Wrapper>
       <svg
+        ref={svgRef}
         viewBox={`0 0 ${xDim} ${yDim}`}
         style={{ width: "60%", background: "white" }}
       >
         <path d={pathFunction(sortedData)} stroke="black" fill="none" />
       </svg>
+      <button onClick={handleDownload}>Download</button>
     </Wrapper>
   );
 };
