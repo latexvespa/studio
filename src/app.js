@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 import styled, { createGlobalStyle } from "styled-components";
 import { keys } from "lodash";
-import Lines from "./lissajous";
+import Lines from "./pages/lissajous";
 
 const GlobalStyle = createGlobalStyle`
   body {
