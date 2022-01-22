@@ -19,28 +19,33 @@ const Lines = () => {
   const svgRef = React.useRef();
   const svgRange = getRange(xDim, yDim, padding);
   const domain = {x: [-1, 1], y: [-1, 1]};
+  const D = Math.random() * Math.PI * 2;
+  const a = Math.random() * 5;
   return (
     <Wrapper>
       <svg
+        xmlns="http://www.w3.org/2000/svg"
         ref={svgRef}
         viewBox={`0 0 ${xDim} ${yDim}`}
-        style={{ width: "60%", background: "white" }}
+        width={xDim}
+        height={xDim}
+        style={{ width: "100%", background: "white" }}
       >
       <g transform="translate(-100 -150)">
-        {range(0, 100, 1).map((a) => {
+        {range(0, 90, 1).map((i) => {
           return (
               <Line
-                key={a}
+                key={i}
                 range={svgRange}
                 domain={domain}
-                data={getLissajousData({ a: 4 })}
-                transform={`translate(${a * 2} ${a * 3})`}
+                data={getLissajousData({ a, D })}
+                transform={`translate(${i * 2} ${i * 3 })`}
               />
             );
         })}
       </g>
       </svg>
-      <SaveButton ref={svgRef} fileName={`lissajous-${Date.now()}`}/>
+      <SaveButton ref={svgRef} fileName={`lissajous-a${a}-D-${D}-${Date.now()}`}/>
     </Wrapper>
   );
 };

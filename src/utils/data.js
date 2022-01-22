@@ -9,7 +9,7 @@ const getData = (num, seed, max = 100) => {
 };
 
 const getLissajousData = (options = {}) => {
-  const { a = 2, b = 3, D = Math.PI, samples = 100, step = 0.01} = options;
+  const { a = 2, b = 3, D = Math.PI, samples = 10, step = 0.01} = options;
   const data = range(0, samples, step).map((t) => ({
     t,
     x: Math.sin(a * t + D),
