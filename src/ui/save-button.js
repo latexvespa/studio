@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { saveAs } from 'file-saver';
+import { saveAs } from "file-saver";
 
 const Wrapper = styled.div`
   padding: 40px 40px;

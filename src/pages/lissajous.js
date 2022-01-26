@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import SaveButton from "../ui/save-button";
+import PngSaveButton from "../ui/png-save-button";
 import { getLissajousData } from "../utils/data";
 import Line from "../primitives/line";
 import { getRange } from "../utils/helpers";
@@ -46,6 +47,7 @@ const Lines = () => {
       </g>
       </svg>
       <SaveButton ref={svgRef} fileName={`lissajous-a${a}-D-${D}-${Date.now()}`}/>
+      <PngSaveButton ref={svgRef} fileName={`lissajous-a${a}-D-${D}-${Date.now()}`}/>
     </Wrapper>
   );
 };
