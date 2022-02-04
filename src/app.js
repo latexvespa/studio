@@ -1,14 +1,10 @@
 import React from "react";
-import { render } from "react-dom";
-import styled, { createGlobalStyle } from "styled-components";
+import tw, { styled } from "twin.macro";
 import { keys } from "lodash";
 import Lines from "./pages/lissajous";
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    margin: 0;
-  }
-`;
+import { Header } from "./ui/header";
+
 
 const Home = () => {
   return <h1>Pick A Demo</h1>;
@@ -26,11 +22,11 @@ const Wrapper = styled.div`
   min-height: 100vh;
 `;
 
-const Header = styled.header`
-  grid-area: 1 / 1 / 2 / 3;
-  background: grey;
-  padding-left: 40px;
-`;
+// const Header = styled.header`
+//   grid-area: 1 / 1 / 2 / 3;
+//   background: grey;
+//   padding-left: 40px;
+// `;
 
 const Sidebar = styled.div`
   grid-area: 2 / 1 / 4 / 2;
@@ -73,7 +69,6 @@ class App extends React.Component {
     const routes = keys(MAP);
     return (
       <Wrapper>
-        <GlobalStyle />
         <Header>
           <h1>Studio</h1>
         </Header>
@@ -100,4 +95,4 @@ class App extends React.Component {
   }
 }
 
-render(<App />, document.getElementById("app-root"));
+export default App;
